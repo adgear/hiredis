@@ -23,10 +23,17 @@ else
   DYLIBNAME?=libhiredis.so
   DYLIB_MAKE_CMD?=gcc -shared -Wl,-soname,${DYLIBNAME} -o ${DYLIBNAME} ${OBJ}
 endif
+PREFIX?=/usr/local
 CCOPT= $(CFLAGS) $(CCLINK) $(ARCH) $(PROF)
 DEBUG?= -g -ggdb 
 
 all: ${DYLIBNAME} ${BINS}
+
+install: all
+	mkdir -p ${PREFIX}/include/hiredis
+	install -c -m 0644 hiredis.h anet.h sds.h fmacros.h ${PREFIX}/include/hiredis
+	mkdir -p ${PREFIX}/lib
+	install -c -m 0755 ${DYLIBNAME} ${PREFIX}/lib/${DYLIBNAME}
 
 # Deps (use make dep to generate this)
 anet.o: anet.c fmacros.h anet.h
