@@ -30,8 +30,8 @@ DEBUG?= -g -ggdb
 all: ${DYLIBNAME} ${BINS}
 
 install: all
-	mkdir -p ${PREFIX}/include/hiredis
-	install -c -m 0644 hiredis.h anet.h sds.h fmacros.h ${PREFIX}/include/hiredis
+	mkdir -p ${PREFIX}/include
+	install -c -m 0644 hiredis.h sds.h ${PREFIX}/include
 	mkdir -p ${PREFIX}/lib
 	install -c -m 0755 ${DYLIBNAME} ${PREFIX}/lib/${DYLIBNAME}
 
