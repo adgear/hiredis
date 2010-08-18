@@ -35,6 +35,11 @@ install: all
 	mkdir -p ${PREFIX}/lib
 	install -c -m 0755 ${DYLIBNAME} ${PREFIX}/lib/${DYLIBNAME}
 
+uninstall:
+	rm -f ${PREFIX}/include/hiredis.h
+	rm -f ${PREFIX}/include/sds.h
+	rm -f ${PREFIX}/lib/${DYLIBNAME}
+
 # Deps (use make dep to generate this)
 anet.o: anet.c fmacros.h anet.h
 example.o: example.c hiredis.h sds.h
