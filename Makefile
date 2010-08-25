@@ -31,9 +31,9 @@ all: ${DYLIBNAME} ${BINS}
 
 install: all
 	mkdir -p ${PREFIX}/include
-	install -c -m 0644 hiredis.h sds.h ${PREFIX}/include
+	install -m 0644 hiredis.h sds.h ${PREFIX}/include
 	mkdir -p ${PREFIX}/lib
-	install -c -m 0755 ${DYLIBNAME} ${PREFIX}/lib/${DYLIBNAME}
+	install -m 0755 ${DYLIBNAME} ${PREFIX}/lib/${DYLIBNAME}
 
 uninstall:
 	rm -f ${PREFIX}/include/hiredis.h
